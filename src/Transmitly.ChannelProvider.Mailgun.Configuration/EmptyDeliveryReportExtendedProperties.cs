@@ -12,24 +12,18 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+using System;
+using Transmitly.Delivery;
+
 namespace Transmitly.ChannelProvider.Mailgun.Configuration
 {
-	/// <summary>
-	/// Collection of constants for the Mailgun channel provider.
-	/// </summary>
-	public static class MailgunConstant
+	sealed class EmptyDeliveryReportExtendedProperties : IDeliveryReportExtendedProperties
 	{
-		/// <summary>
-		/// The channel provider Id.
-		/// </summary>
-		public const string Id = "Mailgun";
-		/// <summary>
-		/// The key used for the channel extended properties bag.
-		/// </summary>
-		public const string EmailPropertiesKey = $"{Id}.Email";
-		/// <summary>
-		/// Default version to fallback to if necessary.
-		/// </summary>
-		internal const string DefaultVersion = "0.2.0";
+	public IEmailExtendedDeliveryReportProperties Email { get; } = new EmptyEmailExtendedDeliveryReportProperties();
+
+		public IDeliveryReportExtendedProperties Adapt(DeliveryReport report)
+		{
+			return this;
+		}
 	}
 }

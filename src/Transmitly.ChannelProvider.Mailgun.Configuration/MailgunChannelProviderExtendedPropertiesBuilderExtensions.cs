@@ -23,8 +23,10 @@ namespace Transmitly.ChannelProvider.Mailgun.Configuration
 	public static class MailgunChannelProviderExtendedPropertiesBuilderExtensions
 	{
 		private static Type? _emailAdaptorType;
+		private static Type? _deliveryReportAdaptorType;
 
 		internal static IEmailExtendedChannelProperties Email => Create<IEmailExtendedChannelProperties, EmptyEmailExtendedChannelProperties>(_emailAdaptorType);
+		internal static IDeliveryReportExtendedProperties DeliveryReport => Create<IDeliveryReportExtendedProperties, EmptyDeliveryReportExtendedProperties>(_deliveryReportAdaptorType);
 
 		private static T Create<T, TDefault>(Type? t)
 			where TDefault : T, new()
@@ -45,9 +47,23 @@ namespace Transmitly.ChannelProvider.Mailgun.Configuration
 			return builder;
 		}
 
+		/// <summary>
+		/// Adds an email delivery report extended properties adaptor to the channel provider registration builder.
+		/// </summary>
+		/// <typeparam name="T">The concrete <see cref="IDeliveryReportExtendedProperties"/> to register for email delivery report extended properties.</typeparam>
+		/// <param name="builder">Builder object.</param>
+		/// <returns>The provided builder object.</returns>
+		public static ChannelProviderRegistrationBuilder AddDeliveryReportExtendedProprtiesAdaptor<T>(this ChannelProviderRegistrationBuilder builder)
+			where T : class, IDeliveryReportExtendedProperties, new()
+		{
+			_deliveryReportAdaptorType = typeof(T);
+			return builder;
+		}
+
 		internal static void Reset()
 		{
 			_emailAdaptorType = null;
+			_deliveryReportAdaptorType = null;
 		}
 	}
 }

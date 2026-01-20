@@ -14,6 +14,7 @@
 
 using Transmitly.Channel.Configuration.Email;
 using Transmitly.ChannelProvider.Mailgun.Configuration;
+using Transmitly.Delivery;
 using Transmitly.Util;
 
 namespace Transmitly
@@ -44,6 +45,17 @@ namespace Transmitly
 		{
 			Guard.AgainstNull(email);
 			return MailgunChannelProviderExtendedPropertiesBuilderExtensions.Email.Adapt(email);
+		}
+
+		/// <summary>
+		/// Mailgun specific settings for delivery reports.
+		/// </summary>
+		/// <param name="deliveryReport">Delivery report.</param>
+		/// <returns>Mailgun delivery report properties.</returns>
+		public static IDeliveryReportExtendedProperties Mailgun(this DeliveryReport deliveryReport)
+		{
+			Guard.AgainstNull(deliveryReport);
+			return MailgunChannelProviderExtendedPropertiesBuilderExtensions.DeliveryReport.Adapt(deliveryReport);
 		}
 	}
 }
