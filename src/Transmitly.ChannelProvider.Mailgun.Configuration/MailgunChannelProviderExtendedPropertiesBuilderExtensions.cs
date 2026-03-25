@@ -53,7 +53,7 @@ namespace Transmitly.ChannelProvider.Mailgun.Configuration
 		/// <typeparam name="T">The concrete <see cref="IDeliveryReportExtendedProperties"/> to register for email delivery report extended properties.</typeparam>
 		/// <param name="builder">Builder object.</param>
 		/// <returns>The provided builder object.</returns>
-		public static ChannelProviderRegistrationBuilder AddDeliveryReportExtendedProprtiesAdaptor<T>(this ChannelProviderRegistrationBuilder builder)
+		public static ChannelProviderRegistrationBuilder AddDeliveryReportExtendedPropertiesAdaptor<T>(this ChannelProviderRegistrationBuilder builder)
 			where T : class, IDeliveryReportExtendedProperties, new()
 		{
 			_deliveryReportAdaptorType = typeof(T);
