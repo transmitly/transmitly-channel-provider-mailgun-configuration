@@ -44,6 +44,14 @@ namespace Transmitly.ChannelProvider.Mailgun.Configuration
         /// </summary>
         public string ApiVersion { get; set; } = "v3";
         /// <summary>
+        /// Reject webhooks whose signature doesn't match <see cref="WebhookSigningKey"/>. Default: true.
+        /// </summary>
+        public bool ValidateDeliveryReportSignature { get; set; } = true;
+        /// <summary>
+        /// HTTP webhook signing key (Mailgun dashboard → Sending → Webhooks). This is not the API key.
+        /// </summary>
+        public string? WebhookSigningKey { get; set; }
+        /// <summary>
         /// Gets the user agent string used in HTTP requests.
         /// </summary>
         public string UserAgent => _userAgent;
