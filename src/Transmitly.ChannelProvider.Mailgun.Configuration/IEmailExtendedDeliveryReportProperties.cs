@@ -14,15 +14,11 @@
 
 using System;
 using System.Collections.Generic;
-using Transmitly.Channel.Configuration.Email;
-using Transmitly.ChannelProvider.Mailgun.Configuration;
 
-namespace Transmitly
+namespace Transmitly.ChannelProvider.Mailgun.Configuration
 {
 	public interface IEmailExtendedDeliveryReportProperties
 	{
-		IEmailExtendedChannelProperties Adapt(IEmailChannelConfiguration email);
-
 		string? Event { get; set; }
 		string? Id { get; set; }
 		DateTimeOffset? Timestamp { get; set; }

@@ -12,14 +12,16 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-using Transmitly.Delivery;
-
-namespace Transmitly
+namespace Transmitly.ChannelProvider.Mailgun.Configuration
 {
+	/// <summary>
+	/// Mailgun specific values for a delivery report.
+	/// </summary>
 	public interface IDeliveryReportExtendedProperties
 	{
-		IDeliveryReportExtendedProperties Adapt(DeliveryReport report);
-
+		/// <summary>
+		/// Mailgun values for an email delivery report.
+		/// </summary>
 		IEmailExtendedDeliveryReportProperties Email { get; }
 	}
 }

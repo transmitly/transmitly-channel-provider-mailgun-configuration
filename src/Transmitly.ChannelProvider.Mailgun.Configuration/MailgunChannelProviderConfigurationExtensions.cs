@@ -37,25 +37,33 @@ namespace Transmitly
 		}
 
 		/// <summary>
-		/// Mailgun specific settings for Email channels.
+		/// Mailgun specific settings for an email channel.
 		/// </summary>
 		/// <param name="email">Email Channel.</param>
 		/// <returns>Mailgun Email properties.</returns>
 		public static IEmailExtendedChannelProperties Mailgun(this IEmailChannelConfiguration email)
 		{
-			Guard.AgainstNull(email);
-			return MailgunChannelProviderExtendedPropertiesBuilderExtensions.Email.Adapt(email);
+			return new EmailExtendedChannelProperties(Guard.AgainstNull(email).ExtendedProperties);
 		}
 
 		/// <summary>
-		/// Mailgun specific settings for delivery reports.
+		/// Mailgun specific settings
+		/// </summary>
+		/// <param name="email">Email being dispatched.</param>
+		/// <returns>Mailgun Email properties.</returns>
+		public static IEmailExtendedChannelProperties Mailgun(this IEmail email)
+		{
+			return new EmailExtendedChannelProperties(Guard.AgainstNull(email).ExtendedProperties);
+		}
+
+		/// <summary>
+		/// Mailgun specific values for a delivery report.
 		/// </summary>
 		/// <param name="deliveryReport">Delivery report.</param>
 		/// <returns>Mailgun delivery report properties.</returns>
 		public static IDeliveryReportExtendedProperties Mailgun(this DeliveryReport deliveryReport)
 		{
-			Guard.AgainstNull(deliveryReport);
-			return MailgunChannelProviderExtendedPropertiesBuilderExtensions.DeliveryReport.Adapt(deliveryReport);
+			return new DeliveryReportExtendedProperties(deliveryReport);
 		}
 	}
 }

@@ -13,7 +13,6 @@
 //  limitations under the License.
 
 using System.Collections.Generic;
-using Transmitly.Channel.Configuration.Email;
 using Transmitly.Template.Configuration;
 
 namespace Transmitly.ChannelProvider.Mailgun.Configuration
@@ -97,12 +96,5 @@ namespace Transmitly.ChannelProvider.Mailgun.Configuration
 		/// Additional properties
 		/// </summary>
 		IDictionary<string, string>? Properties { get; set; }
-
-		/// <summary>
-		/// Adapts the provided email channel to Mailgun extended properties.
-		/// </summary>
-		/// <param name="email">Channel to adapt.</param>
-		/// <returns>Extended email properties.</returns>
-		IEmailExtendedChannelProperties Adapt(IEmailChannelConfiguration email);
 	}
 }
